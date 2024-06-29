@@ -9,19 +9,11 @@ describe("When Events is created", () => {
     await screen.findByText("Prénom");
     await screen.findByText("Personnel / Entreprise");
   });
-
   describe("and a click is triggered on the submit button", () => {
     it("the success action is called", async () => {
       const onSuccess = jest.fn();
-      const setConfirmationMessage = jest.fn();
-      const onError = jest.fn();
-      render(
-        <Form
-          onSuccess={onSuccess}
-          setConfirmationMessage={setConfirmationMessage}
-          onError={onError}
-        />
-      );
+      render(<Form onSuccess={onSuccess} />);
+
       fireEvent(
         await screen.findByTestId("button-test-id"),
         new MouseEvent("click", {
@@ -31,7 +23,7 @@ describe("When Events is created", () => {
       );
       await screen.findByText("En cours");
       await screen.findByText("Envoyer");
-      expect(onError).toHaveBeenCalled();
+      expect(onSuccess).toHaveBeenCalled();
     });
   });
 });
