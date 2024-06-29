@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
@@ -21,7 +20,7 @@ const Page = () => {
   } else {
     last = null;
   }
-  const [confirmationMessage, setConfirmationMessage] = useState("");
+  // const [confirmationMessage, setConfirmationMessage] = useState("");
   return (
     <>
       <header>
@@ -105,7 +104,7 @@ const Page = () => {
           <Modal
             Content={
               <div id="messageConfirm" className="ModalMessage--success">
-                <div>{confirmationMessage}</div>
+                <div>Message envoyé !</div>
                 <p>
                   Merci pour votre message, nous tâcherons de vous répondre dans
                   les plus brefs délais.
@@ -113,16 +112,8 @@ const Page = () => {
               </div>
             }
           >
-            {/* Utilisation du composant Form avec le message de confirmation */}
             {({ setIsOpened }) => (
-              <Form
-                onSuccess={() => {
-                  setIsOpened(true);
-                  setConfirmationMessage("Message envoyé !");
-                }}
-                onError={() => null}
-                setConfirmationMessage={setConfirmationMessage} // Utilisation de setConfirmationMessage ici
-              />
+              <Form onSuccess={() => setIsOpened(true)} onError={() => null} />
             )}
           </Modal>
         </div>
