@@ -20,7 +20,6 @@ const Page = () => {
   } else {
     last = null;
   }
-  // const [confirmationMessage, setConfirmationMessage] = useState("");
   return (
     <>
       <header>
